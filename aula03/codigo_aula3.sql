@@ -1,4 +1,4 @@
--- Active: 1788214102027@@127.0.0.1@5432@db_vendas@public
+-- Active: 1788306868270@@127.0.0.1@5432@db_vendas@public
 DROP TABLE IF EXISTS vendas_itens;
 
 CREATE TABLE vendas_itens(
@@ -274,3 +274,29 @@ WHERE
     -- observacao LIKE '_ntrega ex%';
     -- observacao ILIKE 'entrega%';
     observacao NOT LIKE 'Entrega%';
+
+SELECT DISTINCT
+    produto_id
+FROM
+    vendas_itens
+
+SELECT
+    venda_id,
+    SUM(valor_unitario) AS valor_total,
+    data_venda
+FROM
+    vendas_itens
+GROUP BY venda_id, data_venda
+ORDER BY venda_id
+
+SELECT
+    produto_id,
+    SUM(valor_unitario) AS valor_total,
+    COUNT(*) AS quantidade
+FROM
+    vendas_itens
+GROUP BY produto_id
+ORDER BY produto_id
+
+
+SELECT venda_id, SUM(valor_unitario) AS valor_total, COUNT(*)
