@@ -92,7 +92,8 @@ order by produto_id asc
 
 select
     venda_id,
-    SUM(quantidade * valor_unitario) as valor_total_venda
+    SUM(quantidade * valor_unitario) as valor_total_venda,
+    data_venda
 from vendas_itens2
-GROUP BY venda_id
+GROUP BY venda_id, data_venda
 ORDER BY valor_total_venda DESC;
