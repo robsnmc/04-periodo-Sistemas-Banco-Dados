@@ -1,4 +1,4 @@
--- Active: 1789423817090@@127.0.0.1@5432@bd_hortifruti@public
+-- Active: 1789513996718@@127.0.0.1@5432@bd_hortifruti@public
 CREATE DATABASE bd_hortifruti;
 
 DROP TABLE IF EXISTS itens_venda;
@@ -147,11 +147,11 @@ ORDER BY faturamento DESC;
 
 -- Consulta 9.
 SELECT 
-    categoria, 
+    categoria,
     COUNT(*) AS itens,
     CASE 
-        WHEN COUNT(DISTINCT unidade) = 1 THEN SUM(quantidade)
-        ELSE NULL 
+        WHEN COUNT(DISTINCT unidade) = 1 
+        THEN SUM(quantidade)
     END AS qtd_total,
     ROUND(SUM(quantidade * valor_unitario), 2) AS faturamento
 FROM itens_venda
